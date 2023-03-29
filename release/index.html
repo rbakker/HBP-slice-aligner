@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="UTF-8">
+<style>
+  body,div,table,canvas { 
+    -webkit-box-sizing: border-box;
+	  -moz-box-sizing: border-box;
+	  -ms-box-sizing: border-box;
+	  box-sizing: border-box;
+    margin:0px;
+    border:0px;
+    padding:0px;
+  }
+</style>
+<head>
+<!--script type="text/javascript" src="test-gammacv.min.js"></script-->
+<!--script type="module" src="test_overlay.js"></script-->
+<script type="text/javascript">
+  window.addEventListener('DOMContentLoaded', async () => {
+    const mod = await import('./slice-aligner.js');
+    mod.run();
+  })
+</script>
+<!--link rel="stylesheet" href="test.css"-->
+</head>
+<body style="width: 100%; height:100vh; overflow:hidden">
+<div style="position: absolute; top:0px; height: calc(100%-1ex); width: calc(100%-1ex); z-index: 1; padding: 0.5ex">
+<table><tr>
+  <td>Load images</td><td>:</td><td><input id="openImageStack" type="file" value="Load images" /></td>
+  </tr></table>
+  <table><tr>
+  <td rowspan="2">Move</td><td rowspan="2">:</td><td>
+  <input id="moveLeft" type="button" value="left"/></td><td><span id="moveX">0</span></td><td><input id="moveRight" type="button" value="right">
+  </td></tr><tr>
+  <td>
+  <input id="moveUp" type="button" value="up"/></td><td><span id="moveY">0</span></td><td><input id="moveDown" type="button" value="down"/>
+  </td></tr><tr>
+  <td>Rotate</td><td>:</td><td>
+  <input id="rotateLeft1" type="button" value="--"/><input id="rotateLeft01" type="button" value="-"/></td><td><span id="rotationAngle">0</span></td><td><input id="rotateRight01" type="button" value="+"><input id="rotateRight1" type="button" value="++"/>
+  </td></tr><tr>
+  <td rowspan="2">Center of rotation</td><td rowspan="2">:</td><td>
+  <!--input id="ctrLeft" type="button" value="left"/--></td><td><span id="ctrX">0</span></td><td><!--input id="ctrRight" type="button" value="right"-->
+  </td></tr><tr>
+  <td>
+  <!--input id="ctrUp" type="button" value="up"/--></td><td><span id="ctrY">0</span></td><td><!--input id="ctrDown" type="button" value="down"/-->
+  </td></tr></table>
+</div>
+<div style="position: absolute; height: 100%; width: 87.5%; text-align: center;">
+  <div id="sliceFixed" style="position: absolute; left: 0px; top: 0px; height: 100%; width: 100%"></div>
+  <div id="sliceMoving" style="position: absolute; left: 0px; top: 0px; height: 100%; width: 100%"></div>
+  <!--div id="svgOverlay" style="position: absolute; left: 0px; top:0px; height: 100%; width: 100%"/-->
+  <div id="plotlyOverlay" style="position: absolute; left: 0px; top: 0px; height: 100%; width: 100%"></div>
+  <div style="position: absolute; width: 100%; top: calc(100vh - 10ex); text-align: right">
+    <img src="ebrains_logo.svg" style="height: 10ex"></img>
+  </div>
+</div>
+<div id="filmStrip" style="position: absolute; left: 88%; top: 2px; right: 2px; bottom:2px; overflow-y:scroll; margin:0px;padding:0px"></div>
+
+</body>
+</html>
