@@ -1,0 +1,17 @@
+name: Mirror to Ebrains
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  to_ebrains:
+    runs-on: ubuntu-latest
+    steps:
+      - name: syncmaster
+        uses: wei/git-sync@v3
+        with:
+          source_repo: "rbakkker/HBP-slice-aligner"
+          source_branch: "main"
+          destination_repo: "https://ghpusher:${{ secrets.EBRAINS_GITLAB_ACCESS_TOKEN }}@gitlab.ebrains.eu/rbakker/slice-aligner.git"
+          destination_branch: "master"
