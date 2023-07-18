@@ -11,7 +11,7 @@ jobs:
       - name: syncmaster
         uses: wei/git-sync@v3
         with:
-          source_repo: "rbakkker/HBP-slice-aligner"
+          source_repo: "rbakker/HBP-slice-aligner"
           source_branch: "main"
           destination_repo: "https://githubmirror:${{ secrets.EBRAINS_GITLAB_ACCESS_TOKEN }}@gitlab.ebrains.eu/rbakker/slice-aligner.git"
           destination_branch: "master"
